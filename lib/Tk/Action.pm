@@ -38,6 +38,7 @@ has _bindings => (
     },
 );
 
+# whether the action is currently available
 has is_enabled => (
     metaclass => 'Bool',
     is        => 'ro',
@@ -72,7 +73,7 @@ sub add_widget {
 
 =method $action->rm_widget( $widget );
 
-De-associate C<$widget> with C$<action>.
+De-associate C<$widget> from C$<action>.
 
 =cut
 
@@ -94,7 +95,6 @@ sub add_binding {
     $self->_add_binding($binding);
     $self->window->bind( $binding, $self->is_enabled ? $self->callback : '' );
 }
-
 
 
 =method $action->enable;
