@@ -1,4 +1,7 @@
 Changelog for Tk-Action
 
 {{$NEXT}}
- - initial release
+
+1.093380  2009-12-04 19:14:17 Europe/Paris
+ - initial release, taken from games::pandemic
+ - action abstraction with widgets and shortcuts
