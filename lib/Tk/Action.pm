@@ -5,8 +5,7 @@ use warnings;
 package Tk::Action;
 # ABSTRACT: action item for tk
 
-use Moose;
-use MooseX::AttributeHelpers;
+use Moose 0.92; # attribute helpers
 use MooseX::Has::Sugar;
 use MooseX::SemiAffordanceAccessor;
 use Tk::Sugar;
@@ -17,37 +16,37 @@ use Tk::Sugar;
 # a hash with action widgets.
 has _widgets => (
     ro,
-    metaclass => 'Collection::Hash',
-    isa       => 'HashRef',
-    default   => sub { {} },
-    provides  => {
-        delete  => 'rm_widget',
-        set     => '_set_widget',       # $action->_set_widget($widget, $widget);
-        values  => '_all_widgets',      # my @widgets = $action->_all_widgets;
+    traits  => ['Hash'],
+    isa     => 'HashRef',
+    default => sub { {} },
+    handles => {
+        rm_widget    => 'delete',
+        _set_widget  => 'set',      # $action->_set_widget($widget, $widget);
+        _all_widgets => 'values',   # my @widgets = $action->_all_widgets;
     },
 );
 
 # a list of bindings.
 has _bindings => (
     ro,
-    metaclass => 'Collection::Array',
-    isa       => 'ArrayRef',
-    default   => sub { [] },
-    provides  => {
-        push     => '_add_binding',      # $action->_add_binding($binding);
-        elements => '_all_bindings',     # my @bindings = $action->_all_bindings;
+    traits  => ['Array'],
+    isa     => 'ArrayRef',
+    default => sub { [] },
+    handles => {
+        _add_binding  => 'push',      # $action->_add_binding($binding);
+        _all_bindings => 'elements',  # my @bindings = $action->_all_bindings;
     },
 );
 
 # whether the action is currently available
 has is_enabled => (
-    metaclass => 'Bool',
-    is        => 'ro',
-    isa       => 'Bool',
-    default   => 1,
-    provides  => {
-        set   => '_enable',
-        unset => '_disable',
+    ro,
+    traits  => ['Bool'],
+    isa     => 'Bool',
+    default => 1,
+    handles => {
+        _enable  => 'set',
+        _disable => 'unset',
     },
 );
 
