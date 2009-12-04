@@ -2,7 +2,7 @@ use 5.010;
 use strict;
 use warnings;
 
-package Games::Pandemic::Tk::Action;
+package Tk::Action;
 # ABSTRACT: action item for tk
 
 use Moose;
