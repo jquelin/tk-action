@@ -50,6 +50,18 @@ has is_enabled => (
     },
 );
 
+=attr callback
+
+The callback associated to the action. It is needed to create the
+shortcut bindings. Required, no default.
+
+=attr window
+
+The window holding the widgets being part of the action object. It is
+needed to create the shortcut bindings. Required, no default.
+
+=cut
+
 has callback => ( ro, required, isa => 'CodeRef'    );
 has window   => ( ro, required, isa => 'Tk::Widget' );
 
@@ -99,7 +111,7 @@ sub add_binding {
 
 =method $action->enable;
 
-Activate all associated widgets.
+Activate all associated widgets and shortcuts.
 
 =cut
 
@@ -113,7 +125,7 @@ sub enable {
 
 =method $action->disable;
 
-De-activate all associated widgets.
+De-activate all associated widgets and shortcuts.
 
 =cut
 
@@ -133,9 +145,9 @@ __END__
 
 =head1 SYNOPSIS
 
-    my $action = Games::Pandemic::Tk::Action->new(
+    my $action = Tk::Action->new(
         window   => $mw,
-        callback => $session->postback('event'),
+        callback => \&jfdi,
     );
     $action->add_widget( $menu_entry );
     $action->add_widget( $button );
@@ -155,9 +167,6 @@ This module helps managing actions in a L<Tk> GUI: just create a new
 object, associate some widgets and bindings with C<add_widget()> and
 then de/activate the whole action at once with C<enable()> or
 C<disable()>.
-
-The C<window> and C<callback> attributes are mandatory when calling the
-constructor.
 
 
 =head1 SEE ALSO
