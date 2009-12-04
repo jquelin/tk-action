@@ -3,7 +3,7 @@ use strict;
 use warnings;
 
 package Tk::Action;
-# ABSTRACT: action item for tk
+# ABSTRACT: action abstraction for tk
 
 use Moose 0.92; # attribute helpers
 use MooseX::Has::Sugar;
