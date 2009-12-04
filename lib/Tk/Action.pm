@@ -132,7 +132,6 @@ __PACKAGE__->meta->make_immutable;
 1;
 __END__
 
-
 =head1 SYNOPSIS
 
     my $action = Games::Pandemic::Tk::Action->new(
@@ -153,9 +152,39 @@ Menu entries are often also available in toolbars or other widgets. And
 sometimes, we want to enable or disable a given action, and this means
 having to update everywhere this action is allowed.
 
-This module helps managing actions in a GUI: just create a new object,
-associate some widgets and bindings with C<add_widget()> and then
-de/activate the whole action at once with C<enable()> or C<disable()>.
+This module helps managing actions in a L<Tk> GUI: just create a new
+object, associate some widgets and bindings with C<add_widget()> and
+then de/activate the whole action at once with C<enable()> or
+C<disable()>.
 
 The C<window> and C<callback> attributes are mandatory when calling the
 constructor.
+
+
+=head1 SEE ALSO
+
+You can look for information on this module at:
+
+=over 4
+
+=item * Search CPAN
+
+L<http://search.cpan.org/dist/Tk-Action>
+
+=item * See open / report bugs
+
+L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Tk-Action>
+
+=item * Git repository
+
+L<http://github.com/jquelin/tk-action>
+
+=item * AnnoCPAN: Annotated CPAN documentation
+
+L<http://annocpan.org/dist/Tk-Action>
+
+=item * CPAN Ratings
+
+L<http://cpanratings.perl.org/d/Tk-Action>
+
+=back
