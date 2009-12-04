@@ -7,6 +7,7 @@ package Tk::Action;
 
 use Moose;
 use MooseX::AttributeHelpers;
+use MooseX::Has::Sugar;
 use MooseX::SemiAffordanceAccessor;
 use Tk::Sugar;
 
@@ -15,8 +16,8 @@ use Tk::Sugar;
 
 # a hash with action widgets.
 has _widgets => (
+    ro,
     metaclass => 'Collection::Hash',
-    is        => 'ro',
     isa       => 'HashRef',
     default   => sub { {} },
     provides  => {
@@ -28,8 +29,8 @@ has _widgets => (
 
 # a list of bindings.
 has _bindings => (
+    ro,
     metaclass => 'Collection::Array',
-    is        => 'ro',
     isa       => 'ArrayRef',
     default   => sub { [] },
     provides  => {
@@ -50,8 +51,8 @@ has is_enabled => (
     },
 );
 
-has callback => ( is => 'ro', isa => 'CodeRef',    required => 1, );
-has window   => ( is => 'ro', isa => 'Tk::Widget', required => 1, );
+has callback => ( ro, required, isa => 'CodeRef'    );
+has window   => ( ro, required, isa => 'Tk::Widget' );
 
 
 
